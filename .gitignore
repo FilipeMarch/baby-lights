@@ -9,3 +9,6 @@ wheels/
 # Virtual environments
 .venv
 .buildozer
+
+# Kivy Reloader
+.kivy_reloader_state.json
