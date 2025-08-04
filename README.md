@@ -27,7 +27,7 @@ Baby Lights provides a simple, distraction-free visual experience. When a baby t
 
 1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/FilipeMarch/baby-lights
 cd baby-lights
 ```
 
@@ -38,7 +38,7 @@ uv run main.py
 
 ### Building for Android
 
-1. Run `Kivy Reloader`:
+1. Run **Kivy Reloader**:
 ```bash
 uv run kivy-reloader run
 ```
