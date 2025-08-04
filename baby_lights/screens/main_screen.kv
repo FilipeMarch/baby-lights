@@ -1,0 +1,91 @@
+#:import BabyButton baby_lights.uix.baby_button.BabyButton
+
+<MainScreen>:
+    name: 'Main Screen'
+    
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.97, 1, 1  # Soft blue-white background
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(40)
+        spacing: dp(30)
+        
+        # Title area
+        Label:
+            text: 'Baby Lights'
+            font_size: dp(48)
+            color: 0.2, 0.3, 0.6, 1
+            bold: True
+            size_hint_y: None
+            height: self.texture_size[1]
+            text_size: self.size[0], None
+            halign: 'center'
+            valign: 'middle'
+
+        # Description
+        Label:
+            text: 'Simple visual effects for your little one'
+            font_size: dp(18)
+            color: 0.4, 0.4, 0.4, 1
+            size_hint_y: None
+            text_size: self.size[0], None
+            height: self.texture_size[1]
+            halign: 'center'
+            valign: 'middle'
+        
+        # Button area
+        BoxLayout:
+            orientation: 'vertical'
+            spacing: dp(20)
+            BabyButton:
+                text: 'START'
+                theme: 'baby'
+                button_size: 'baby'
+                on_release: root.show_start_confirmation()
+                
+            BabyButton:
+                text: 'About'
+                theme: 'secondary'
+                button_size: 'sm'
+                size_hint_x: None
+                width: dp(120)
+                pos_hint: {'center_x': 0.5}
+                on_release: root.show_about_popup()
+            
+
+# Usage Examples (following shadcn/ui conventions):
+#
+# Primary action (baby-themed, extra large):
+# BabyButton:
+#     text: 'START'
+#     theme: 'baby'
+#     button_size: 'baby'
+#
+# Standard primary button:
+# BabyButton:
+#     text: 'Continue'
+#     theme: 'default'
+#     button_size: 'default'
+#
+# Secondary action:
+# BabyButton:
+#     text: 'Settings'
+#     theme: 'secondary'
+#     button_size: 'default'
+#
+# Destructive action:
+# BabyButton:
+#     text: 'Delete'
+#     theme: 'destructive'
+#     button_size: 'lg'
+#
+# Outline button:
+# BabyButton:
+#     text: 'Cancel'
+#     theme: 'outline'
+#     button_size: 'sm'
