@@ -15,7 +15,26 @@ Baby Lights provides a simple, distraction-free visual experience. When a baby t
 
 ## Screenshots
 
-*Coming soon - visual examples of the shader effects*
+<div align="center">
+
+### Splash Screen
+<img src="screenshots/splash-screen.jpg" alt="App splash screen" width="300">
+
+### Main Screen
+<img src="screenshots/first-screen.jpg" alt="Baby Lights main screen" width="300">
+
+
+### Immersive Mode
+<img src="screenshots/immersive-mode.jpg" alt="Full-screen immersive mode" width="300">
+
+### Shader Effects
+<img src="screenshots/shader-example-1.jpg" alt="Gentle touch responsive lights" width="300">
+<img src="screenshots/shader-example-2.jpg" alt="Soft glows on black background" width="300">
+
+
+### About Screen
+<img src="screenshots/about-screen.jpg" alt="About screen with app information" width="300">
+</div>
 
 ## Installation
 
