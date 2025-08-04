@@ -53,9 +53,6 @@ class ShaderScreen(Screen):
         self.shader_canvas = ShaderCanvas()
         self.add_widget(self.shader_canvas)
 
-        # Set up window bindings for exit gesture
-        self._setup_window_bindings()
-
     def on_enter(self):
         """Called when screen is entered."""
         logger.info('Entered shader screen - baby lights active')
