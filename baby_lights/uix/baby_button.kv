@@ -1,0 +1,88 @@
+# Size configurations following shadcn/ui conventions
+#  sm: 36           # Small/compact
+#  default: 40      # Standard size
+#  lg: 44           # Large/prominent
+#  baby: 80         # Extra large for little fingers
+
+#:set BUTTON_SIZES {'sm': dp(36), 'default': dp(40), 'lg': dp(44), 'baby': dp(80)}
+
+# Font size configurations following shadcn/ui conventions
+#  sm: 12           # Small/compact
+#  default: 14      # Standard size
+#  lg: 16           # Large/prominent
+#  baby: 24         # Extra large for little fingers
+
+#:set FONT_SIZES {'sm': dp(12), 'default': dp(14), 'lg': dp(16), 'baby': dp(24)}
+
+
+<BabyButton>:
+    # Remove default button background
+    background_color: 0, 0, 0, 0
+    background_normal: ''
+    background_down: ''
+    
+    # Dynamic sizing based on button_size property (shadcn/ui style)
+    height: BUTTON_SIZES[root.button_size]
+    font_size: FONT_SIZES[root.button_size]
+    size_hint_y: None
+    bold: True
+    
+    canvas.before:
+        # Shadow effect (slightly offset darker rectangle)
+        PushMatrix
+        Translate:
+            xy: self.x + dp(2), self.y + dp(-2)
+        Color:
+            rgba: 0, 0, 0, 0.1
+        SmoothRoundedRectangle:
+            pos: 0, 0
+            size: self.size
+            radius: [dp(8)]
+        PopMatrix
+        
+        # Main background color (updated by Python code based on theme)
+        Color:
+            rgba: root.bg_color
+        SmoothRoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(8)]
+        
+        Color:
+            rgba: 0.3, 0.4, 0.8, 1 if root.theme == 'outline' else 0, 0, 0, 0
+        # Outline border for 'outline' theme
+        SmoothLine:
+            width: dp(1)
+            rounded_rectangle: (self.x, self.y, self.width, self.height, dp(8))
+
+# Usage Examples (following shadcn/ui conventions):
+#
+# Primary action (baby-themed, extra large):
+# BabyButton:
+#     text: 'START'
+#     theme: 'baby'
+#     button_size: 'baby'
+#
+# Standard primary button:
+# BabyButton:
+#     text: 'Continue'
+#     theme: 'default'
+#     button_size: 'default'
+#
+# Secondary action:
+# BabyButton:
+#     text: 'Settings'
+#     theme: 'secondary'
+#     button_size: 'default'
+#
+# Destructive action:
+# BabyButton:
+#     text: 'Delete'
+#     theme: 'destructive'
+#     button_size: 'lg'
+#
+# Outline button:
+# BabyButton:
+#     text: 'Cancel'
+#     theme: 'outline'
+#     button_size: 'sm'
