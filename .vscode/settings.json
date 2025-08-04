@@ -1,0 +1,23 @@
+{
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.codeActionsOnSave": {
+            "source.fixAll.ruff": "explicit",
+            "source.organizeImports.ruff": "explicit"
+        }
+    },
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.indexing": true,
+    "python.analysis.stubPath": "",
+    "python.analysis.packageIndexDepths": [
+        {
+            "name": "",
+            "depth": 4,
+            "includeAllSymbols": true
+        }
+    ],
+    "mypy.runUsingActiveInterpreter": true,
+    "mypy.dmypyExecutable": "${workspaceFolder}/.venv/bin/dmypy",
+    "mypy.configFile": "pyproject.toml"
+}
