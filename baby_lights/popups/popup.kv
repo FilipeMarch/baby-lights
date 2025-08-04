@@ -1,0 +1,113 @@
+#:import BabyButton baby_lights.uix.baby_button.BabyButton
+
+# Popup styles following Baby Lights design system
+<ConfirmationPopup>:
+    # size_hint: 0.8, 0.5
+    auto_dismiss: False
+
+    # Override ModalView default styling
+    background_color: 1, 1, 1, 1        # Pure white multiplier
+    background: ''                      # Remove default gray texture
+    border: [0, 0, 0, 0]                # Remove default borders
+    overlay_color: 0, 0, 0, 0.3         # Lighter overlay (less dark behind modal)
+    title_color: 0.2, 0.3, 0.6, 1       # Dark blue title (same as Baby Lights title)
+    title_size: dp(21)                  # Title font size
+    
+    # Custom popup background with baby-friendly styling
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.97, 1, 1  # Soft blue-white background (same as MainScreen)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(12)]
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        
+        AnchorLayout:
+            Label:
+                id: message_label
+                text: root.message_text
+                text_size: self.parent.size
+                halign: 'center'
+                valign: 'middle'
+                font_size: dp(18)
+                color: 0.2, 0.3, 0.6, 1  # Same as Baby Lights title
+                size_hint_y: None
+                height: self.texture_size[1]
+            
+        BoxLayout:
+            orientation: 'horizontal'
+            spacing: dp(15)
+            size_hint_y: None
+            height: dp(50)
+            
+            BabyButton:
+                id: cancel_button
+                text: root.cancel_text
+                theme: 'secondary'
+                button_size: 'default'
+                size_hint_x: 0.5
+                on_release: root.on_cancel_press()
+                opacity: 0.5 if self.disabled else 1.0
+                
+            BabyButton:
+                id: confirm_button
+                text: root.confirm_text
+                theme: 'baby'
+                button_size: 'default'
+                size_hint_x: 0.5
+                on_release: root.on_confirm_press()
+                opacity: 0.5 if self.disabled else 1.0
+
+
+<InfoPopup>:
+    # size_hint: 0.7, 0.7
+    auto_dismiss: False
+
+    # Override ModalView default styling
+    background_color: 1, 1, 1, 1        # Pure white multiplier
+    background: ''                      # Remove default gray texture
+    border: [0, 0, 0, 0]                # Remove default borders
+    overlay_color: 0, 0, 0, 0.3         # Lighter overlay (less dark behind modal)
+    title_color: 0.2, 0.3, 0.6, 1       # Dark blue title (same as Baby Lights title)
+    title_size: dp(21)                  # Title font size
+    
+    # Custom popup background with baby-friendly styling
+    canvas.before:
+        Color:
+            rgba: 0.95, 0.97, 1, 1  # Soft blue-white background
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [dp(12)]
+    
+    BoxLayout:
+        orientation: 'vertical'
+        padding: dp(20)
+        spacing: dp(20)
+        
+        Label:
+            id: message_label
+            text: root.message_text
+            text_size: self.width, None
+            halign: 'center'
+            valign: 'middle'
+            font_size: dp(18)
+            color: 0.2, 0.3, 0.6, 1  # Same as Baby Lights title
+            size_hint_y: None
+            height: self.texture_size[1]
+            
+        AnchorLayout:
+            BabyButton:
+                id: ok_button
+                text: root.ok_text
+                theme: 'baby'
+                button_size: 'default'
+                size_hint: None, None
+                width: dp(120)
+                on_release: root.on_ok_press()
+                opacity: 0.5 if self.disabled else 1.0
