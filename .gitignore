@@ -12,3 +12,4 @@ wheels/
 
 # Kivy Reloader
 .kivy_reloader_state.json
+baby-lights-release.keystore
