@@ -1,0 +1,89 @@
+name: Android APK
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: android-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  apk:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      JAVA_HOME: /usr/lib/jvm/java-17-openjdk-amd64
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: System packages
+        env:
+          DEBIAN_FRONTEND: noninteractive
+        run: |
+          set -euxo pipefail
+          sudo apt-get update -y
+          sudo apt-get install -y --no-install-recommends \
+            build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev \
+            libsqlite3-dev curl libncurses-dev xz-utils tk-dev libxml2-dev \
+            libxmlsec1-dev libffi-dev liblzma-dev git zip unzip openjdk-17-jdk \
+            autoconf libtool pkg-config cmake adb libmtdev1
+          sudo apt-get clean
+          sudo rm -rf /var/lib/apt/lists/*
+
+      - name: Install uv
+        run: |
+          set -euxo pipefail
+          curl -Ls https://astral.sh/uv/install.sh | sh
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+
+      - name: Python 3.11 via uv
+        run: |
+          set -euxo pipefail
+          uv python install 3.11
+          uv python pin 3.11
+          python -V
+          uv --version
+
+      # Prefer committed pyproject/lock; install exactly those deps.
+      - name: Sync deps via uv (frozen)
+        run: |
+          set -euxo pipefail
+          uv sync --frozen
+          uv run python -c "import sys,site; print(sys.executable); print(site.getsitepackages())"
+
+      # Warm caches to avoid cold toolchain downloads and Gradle rebuilds
+      - name: Cache Android/Gradle/Buildozer/uv
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.buildozer
+            ~/.gradle
+            ~/.android
+            ~/.cache/uv
+          key: android-${{ runner.os }}-${{ hashFiles('buildozer.spec', 'pyproject.toml', 'uv.lock') }}
+          restore-keys: |
+            android-${{ runner.os }}-
+
+      - name: Build APK
+        shell: bash
+        run: |
+          set -euxo pipefail
+          echo "=== Starting APK build ==="
+          uv run kivy-reloader run build
+          echo "=== Build completed ==="
+          ls -lah bin || true
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: apk-debug
+          path: bin/*.apk
+          if-no-files-found: error
