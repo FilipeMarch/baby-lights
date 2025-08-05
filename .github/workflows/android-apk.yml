@@ -35,7 +35,7 @@ jobs:
             libsqlite3-dev curl libncurses-dev xz-utils tk-dev libxml2-dev \
             libxmlsec1-dev libffi-dev liblzma-dev git zip unzip openjdk-17-jdk \
             autoconf libtool pkg-config cmake adb libmtdev1 \
-            automake autopoint autotools-dev libltdl7-dev
+            automake autopoint autotools-dev libltdl-dev
           sudo apt-get clean
           sudo rm -rf /var/lib/apt/lists/*
 
