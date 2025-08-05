@@ -7,8 +7,8 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,toml,txt
 source.exclude_dirs = temp, bin, dist, .venv, __pycache__, .vscode, tests
 source.exclude_patterns = app_copy.zip, buildozer.spec, poetry.lock, pyproject.toml, replace_kivy_reloader.py, get_context.py
-version = 0.1
-requirements = python3, kivy, kivy_reloader==0.6.4, android, toml, trio, attrs, outcome, sniffio, sortedcontainers, exceptiongroup
+version = 0.1.1
+requirements = python3, kivy, kivy_reloader==0.7.0, android, toml, trio, attrs, outcome, sniffio, sortedcontainers, exceptiongroup
 presplash.filename = baby_lights/assets/presplash.png
 icon.filename = baby_lights/assets/icon.png
 orientation = portrait
