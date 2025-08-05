@@ -69,8 +69,10 @@ jobs:
             ~/.gradle
             ~/.android
             ~/.cache/uv
-          key: android-${{ runner.os }}-${{ hashFiles('buildozer.spec', 'pyproject.toml', 'uv.lock') }}
+            .buildozer
+          key: android-${{ runner.os }}-${{ hashFiles('buildozer.spec', 'pyproject.toml', 'uv.lock') }}-v3
           restore-keys: |
+            android-${{ runner.os }}-${{ hashFiles('buildozer.spec', 'pyproject.toml') }}-
             android-${{ runner.os }}-
 
       - name: Build APK
