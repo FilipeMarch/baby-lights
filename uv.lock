@@ -25,7 +25,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "kivy-reloader", specifier = ">=0.6.4" }]
+requires-dist = [{ name = "kivy-reloader", specifier = ">=0.6.5" }]
 
 [package.metadata.requires-dev]
 dev = [{ name = "mypy", specifier = ">=1.17.1" }]
@@ -314,7 +314,7 @@ wheels = [
 
 [[package]]
 name = "kivy-reloader"
-version = "0.6.4"
+version = "0.6.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "buildozer" },
@@ -329,9 +329,9 @@ dependencies = [
     { name = "trio" },
     { name = "typer" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/46/5c/81df1164792173ba6aeabb868cf5772bbc8cf3e7450229bd401a40b7739f/kivy_reloader-0.6.4.tar.gz", hash = "sha256:894f13e882d23975cf57b66c9814b1cbd56ac81d6f8f95135ac0791cb1992fc0", size = 53249, upload-time = "2025-08-03T02:39:34.619Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/22/bf/ce9329eb788680a00226ca98a1d36035e4c05f6c500f7c603d1620ddb900/kivy_reloader-0.6.5.tar.gz", hash = "sha256:8b33902ccfdd3d3f139dd852c3498e76640802e3b672556926e7a23c765c85da", size = 52530, upload-time = "2025-08-05T06:36:50.964Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/fc/3e/7bc990f72212d7633d55878868c98dccf55095afa1c3977c24f861f18ed1/kivy_reloader-0.6.4-py3-none-any.whl", hash = "sha256:3091f5c151dd8723dfc6c04a0eb4fd016c74cb557389559ecd0d336b2a84ff65", size = 57998, upload-time = "2025-08-03T02:39:33.227Z" },
+    { url = "https://files.pythonhosted.org/packages/92/b5/b1d6cac3449aa2bf0f8c074ba3d85d67c431c7243ca33387bd6610c61d04/kivy_reloader-0.6.5-py3-none-any.whl", hash = "sha256:a59f83ab4d4695e191c684804650b313314fa0d70d5566fd37600baae8e18bb1", size = 58452, upload-time = "2025-08-05T06:36:49.526Z" },
 ]
 
 [[package]]
